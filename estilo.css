@@ -1,0 +1,95 @@
+@font-face{font-family:Anton;src:url(/vivienda-catalunya/fuentes/anton.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Montserrat;src:url(/vivienda-catalunya/fuentes/montserrat.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{--papel:#e9edef;--verde:#C6EE8E;--verde-claro:#D9F7A4;--rojo:#E5402A;--negro:#151515}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{min-height:100vh;min-height:100dvh;background:var(--papel) url(/vivienda-catalunya/arte/grade.png) 0 0/38px 38px;color:var(--negro);font:500 16px/1.45 Montserrat,system-ui,sans-serif;position:relative;isolation:isolate;overflow-x:hidden}
+/* a textura é do papel: rola com a página e fica atrás da estrela e de tudo */
+body::before{content:"";position:absolute;inset:0;background:url(/vivienda-catalunya/arte/textura.webp) 0 0/1080px auto repeat;opacity:.55;pointer-events:none;z-index:-1}
+/* a estrela (Gui, 20/11): grandona, à direita, só com as pontas e o lado aparecendo, cortada na página */
+.fondo{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.estrella{--w:min(200vw,1800px);--ve:min(52vw,620px);position:absolute;width:var(--w);height:calc(var(--w) * 1.04);right:calc(var(--ve) - var(--w));top:70px}
+.muni .estrella{top:230px}
+.t{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.005em}
+a{color:inherit}
+.envoltura{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 16px}
+.barra{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+.marca{display:inline-block;background:var(--negro);color:var(--verde-claro);font-size:20px;line-height:1;padding:9px 11px 6px;text-decoration:none}
+.barra a.volver{flex:none;font-weight:800;font-size:14px;text-decoration:none;border-bottom:2px solid var(--negro)}
+@media(max-width:480px){.barra .largo{display:none}}
+
+/* ---------- a entrada, no molde da do cards.boralula.org: o título à esquerda; à direita a localização, o "o" e a busca */
+.entrada{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);min-height:100vh;min-height:100dvh}
+.heroi,.costat,.caixa,.caixa>*{min-width:0}
+.heroi{display:flex;flex-direction:column;justify-content:center;padding:28px 16px 10px;gap:14px}
+.barret{align-self:flex-start;background:var(--negro);color:var(--verde-claro);font-size:16px;line-height:1;padding:7px 9px 4px}
+.heroi h1{font-size:clamp(48px,14vw,64px);line-height:.92}
+.heroi h1 span{display:inline-block;background:var(--rojo);color:var(--verde-claro);padding:6px 10px 0;margin-top:6px}
+.heroi p{font-weight:700;font-size:16px;max-width:30rem}
+.costat{padding:6px 16px 28px;display:flex;align-items:flex-start;justify-content:center}
+.caixa{width:100%;max-width:520px;background:#fff;border:3px solid var(--negro);box-shadow:8px 8px 0 var(--verde);padding:20px 18px;display:grid;gap:14px}
+.btn-loc{font:800 17px/1.1 Montserrat,sans-serif;text-transform:uppercase;letter-spacing:.02em;color:var(--verde-claro);background:var(--negro);border:3px solid var(--negro);min-height:60px;padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.btn-loc:hover{background:#000;box-shadow:4px 4px 0 var(--rojo)}
+.btn-loc:active{transform:translate(2px,2px)}
+.btn-loc:disabled{opacity:.7;cursor:progress}
+.btn-loc svg{width:22px;height:22px;flex:none}
+.o{display:flex;align-items:center;gap:10px;color:#555;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.o::before,.o::after{content:"";flex:1;height:2px;background:#cfd5d8}
+.rotul{display:block;font-weight:800;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;color:#444}
+.camp{position:relative}
+.camp>svg{position:absolute;left:14px;top:27px;width:20px;height:20px;transform:translateY(-50%);color:#555;pointer-events:none}
+.camp input{width:100%;font:700 17px/1.2 Montserrat,sans-serif;color:var(--negro);background:var(--papel);border:3px solid var(--negro);border-radius:0;padding:13px 14px 13px 44px;min-height:54px;outline:none;-webkit-appearance:none}
+.camp input:focus{background:#fff;box-shadow:5px 5px 0 var(--verde)}
+.camp input::placeholder{color:#6d7377}
+.suggs{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:30;list-style:none;background:#fff;border:3px solid var(--negro);max-height:min(46vh,330px);overflow:auto}
+.suggs li a{display:block;padding:10px 12px;text-decoration:none;font-weight:800;border-top:1px solid #e1e5e7}
+.suggs li:first-child a{border-top:0}
+.suggs li a small{display:block;font-weight:600;font-size:12px;color:#555}
+.suggs li a:hover,.suggs li a:focus,.suggs li a.actiu{background:var(--verde-claro);outline:none}
+.suggs .cap{padding:10px 12px;font-weight:600;color:#555}
+.msg{font-size:14px;font-weight:700}
+.msg:empty{display:none}
+.msg.error{color:#b3261e}
+.dreceres b{display:block;font-weight:800;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#444;margin-bottom:8px}
+.dreceres-linia{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;scrollbar-width:none;margin-right:-18px;padding-right:18px;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.dreceres-linia::-webkit-scrollbar{display:none}
+.dreceres a{flex:none;background:#fff;border:2px solid var(--negro);height:34px;padding:0 12px;display:inline-flex;align-items:center;white-space:nowrap;text-decoration:none;font-weight:800;font-size:13px}
+.dreceres a:hover{background:var(--verde-claro)}
+@media(min-width:900px){
+  .entrada{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);max-width:1240px;margin:0 auto}
+  .heroi{padding:48px clamp(32px,5vw,72px);gap:20px}
+  .heroi h1{font-size:clamp(64px,6.4vw,104px)}
+  .heroi p{font-size:20px}
+  .costat{align-items:center;padding:48px clamp(24px,4vw,56px)}
+  .caixa{padding:30px 28px;gap:20px}
+  .btn-loc{min-height:72px;font-size:19px}
+  .camp input{min-height:62px;font-size:19px}
+  .camp>svg{top:31px}
+  .dreceres-linia{flex-wrap:wrap;overflow:hidden;height:78px;margin-right:0;padding-right:0;-webkit-mask-image:none;mask-image:none}
+}
+@media(max-width:899px) and (max-height:700px){.heroi{padding-top:16px;gap:10px}.heroi h1{font-size:44px}.heroi p{font-size:14px}.caixa{gap:10px;padding:16px 14px}.btn-loc{min-height:52px}}
+
+/* ---------- a página do município */
+.cab{padding:18px 0 6px}
+.cab h1{display:inline-block;background:var(--negro);color:var(--verde-claro);font-size:clamp(40px,12vw,92px);line-height:1;padding:12px 14px 6px;max-width:100%;overflow-wrap:anywhere}
+.cab p{margin-top:12px;font-weight:700}
+.carteles{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;margin-top:22px;width:100%;max-width:100%}
+@media(min-width:760px){.carteles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1060px){.carteles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cartel{display:flex;flex-direction:column;min-width:0;max-width:100%}
+.cartel .img{display:block;border:3px solid var(--negro);background:#fff;aspect-ratio:4/5;box-shadow:8px 8px 0 var(--verde);width:calc(100% - 8px);max-width:100%;overflow:hidden}
+.cartel .img img{display:block;width:100%;max-width:100%;height:100%;object-fit:cover}
+.botones{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:calc(100% - 8px);gap:10px;margin-top:16px}
+.boton{min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:10px 12px;border:3px solid var(--negro);font:800 15px/1.1 Montserrat,sans-serif;text-transform:uppercase;letter-spacing:.03em;text-decoration:none;cursor:pointer;text-align:center;-webkit-tap-highlight-color:transparent}
+.boton svg{flex:none;width:20px;height:20px}
+@media(max-width:420px){.boton{font-size:13px;letter-spacing:0;padding:10px 8px;gap:6px}.boton svg{width:18px;height:18px}}
+.boton.bajar{background:var(--negro);color:var(--verde-claro)}
+.boton.zap{background:var(--rojo);color:#fff}
+.boton:active{transform:translate(2px,2px)}
+.boton[disabled]{opacity:.6;cursor:wait}
+.fuente{overflow-wrap:anywhere;margin-top:12px;font-size:12px;line-height:1.4;color:#444}
+.enlace{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.enlace .boton{background:#fff;color:var(--negro);min-height:46px;font-size:13px}
+.pie{position:relative;z-index:1;margin:48px 0 32px;font-size:13px;color:#444;max-width:640px}
+.aviso{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--negro);color:var(--verde-claro);font-weight:800;padding:10px 14px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none;max-width:calc(100vw - 32px)}
+.aviso.ver{opacity:1}
